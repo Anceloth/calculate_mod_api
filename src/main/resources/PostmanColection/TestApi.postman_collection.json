@@ -1,0 +1,73 @@
+{
+	"info": {
+		"_postman_id": "68800ec3-a0b8-49b7-b687-ccf32fec4c88",
+		"name": "TestApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "calculate",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/?numX=7.0&numY=5.0&numN=12345.0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						""
+					],
+					"query": [
+						{
+							"key": "numX",
+							"value": "7.0"
+						},
+						{
+							"key": "numY",
+							"value": "5.0"
+						},
+						{
+							"key": "numN",
+							"value": "12345.0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "calculate POST",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"numberX\": 7.0,\n    \"numberY\": 5.0,\n    \"numberN\": 12345.0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/post/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"post",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
