@@ -41,8 +41,7 @@ class RestApplicationTests {
 			assertEquals(12339.0, result);
 		} catch (Exception e) {
 			e.printStackTrace();
-		}		
-		
+		}				
 	}
 	
 	/**
