@@ -1,5 +1,7 @@
 package com.inclusioncloud.rest.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.slf4j.Logger;
@@ -15,8 +17,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.inclusioncloud.rest.core.entities.InputNumbersDTO;
+import com.inclusioncloud.rest.core.entities.ModOperation;
 import com.inclusioncloud.rest.core.entities.ResponseDTO;
 import com.inclusioncloud.rest.core.usecases.CalculateUseCase;
+import com.inclusioncloud.rest.core.usecases.GetAllOperationsUseCase;
 
 /**
  * Controller which exposes the endpoints calculate/GET & calculate/POST
@@ -32,6 +36,9 @@ public class Controller {
 
 	@Autowired
 	private CalculateUseCase calculateUseCase;
+	
+	@Autowired
+	private GetAllOperationsUseCase getAlloperations;
 
 	@GetMapping("/")
 	public ResponseEntity<ResponseDTO> calculate(
@@ -73,5 +80,19 @@ public class Controller {
 			return ResponseEntity.internalServerError().build();
 		}
 	}
+	
+	 @GetMapping("/operations/")
+	 public ResponseEntity<List<ModOperation>> getOperations() {
+		 List<ModOperation> operations = new ArrayList<>();
+		 try {
+			Optional<List<ModOperation>> output;
+			operations = getAlloperations.ejecutar(null);
+			output = Optional.of(operations);
+			return ResponseEntity.ok().body(output.get());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.internalServerError().build();
+		}
+	 }
 
 }
